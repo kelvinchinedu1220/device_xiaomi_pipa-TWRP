@@ -50,9 +50,8 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 BOARD_VENDOR := xiaomi
 
 # Kernel
+TARGET_FORCE_PREBUILT_KERNEL := true
 VENDOR_CMDLINE := "console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm buildvariant=user androidboot.init_fatal_reboot_target=recovery androidboot.selinux=permissive"
-TARGET_KERNEL_CONFIG := pipa_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/pipa
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE          := 0x00000000
 TARGET_KERNEL_ARCH := arm64
@@ -82,7 +81,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true # may not really be needed
 
 # Partitions
-BOARD_FLASH_BLOCK_SIZE := 262144 
+BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE:= 100663296
 
