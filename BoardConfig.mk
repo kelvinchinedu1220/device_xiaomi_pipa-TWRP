@@ -50,17 +50,16 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 BOARD_VENDOR := xiaomi
 
 # Kernel
+TARGET_NO_KERNEL := false
 VENDOR_CMDLINE := "console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm buildvariant=user androidboot.init_fatal_reboot_target=recovery androidboot.selinux=permissive"
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE          := 0x00000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_KERNEL_CMDLINE := $(VENDOR_CMDLINE)
-
 
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --vendor_cmdline $(VENDOR_CMDLINE)
@@ -68,9 +67,13 @@ BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE) --board ""
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 # Prebuilt kernel
-TARGET_FORCE_PREBUILT_KERNEL := true
-BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+TARGET_NO_KERNEL := false
+BOARD_RAMDISK_USE_LZ4 := true
 BOARD_KERNEL_SEPARATED_DTBO := true
+TARGET_FORCE_PREBUILT_KERNEL := true
+BOARD_FORCE_PREBUILT_KERNEL := true
+BOARD_USES_PREBUILT_KERNEL := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
