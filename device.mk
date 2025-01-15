@@ -21,10 +21,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# API
-PRODUCT_TARGET_VNDK_VERSION := 33
-PRODUCT_SHIPPING_API_LEVEL := 33
-
 # A/B
 ENABLE_VIRTUAL_AB := true
 AB_OTA_UPDATER := true
