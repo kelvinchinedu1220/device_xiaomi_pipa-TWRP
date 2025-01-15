@@ -9,7 +9,7 @@ DEVICE_PATH := device/xiaomi/pipa
 # fscrypt policy
 TW_USE_FSCRYPT_POLICY := 2
 
-# Inherit from common AOSP config
+# Inherit from common TWRP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Enable updating of APEXes
